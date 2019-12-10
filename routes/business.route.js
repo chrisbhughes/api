@@ -7,12 +7,13 @@ const businessRoutes = express.Router();
 // Require Business model in our routes module
 let Business = require('../models/Business');
 
+
 // Defined store route
 businessRoutes.route('/add').post(function (req, res) {
   let business = new Business(req.body);
   business.save()
     .then(business => {
-      res.status(200).json({'business': 'business in added successfully'});
+      res.status(200).json({'business': 'Player added successfully'});
     })
     .catch(err => {
     res.status(400).send("unable to save to database");
@@ -38,7 +39,13 @@ businessRoutes.route('/edit/:id').get(function (req, res) {
       res.json(business);
   });
 });
-
+// Defined edit route
+businessRoutes.route('/joingame/:id').get(function (req, res) {
+  let id = req.params.id;
+  Business.findById(id, function (err, business){
+      res.json(business);
+  });
+});
 //  Defined update route
 businessRoutes.route('/update/:id').post(function (req, res) {
     Business.findById(req.params.id, function(err, business) {
