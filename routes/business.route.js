@@ -5,7 +5,7 @@ const app = express();
 const businessRoutes = express.Router();
 
 // Require Business model in our routes module
-let Business = require('../models/Business');
+let Business = require('https://ac-backend-prod.herokuapp.com/api/models/Business');
 
 
 // Defined store route
